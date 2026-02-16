@@ -581,6 +581,18 @@
         }
       ]
     },
+    "step_body": {
+      "type": "REPEAT1",
+      "content": {
+        "type": "ALIAS",
+        "content": {
+          "type": "SYMBOL",
+          "name": "_other"
+        },
+        "named": true,
+        "value": "list_item"
+      }
+    },
     "_alt_steps": {
       "type": "CHOICE",
       "members": [
@@ -604,8 +616,12 @@
         "type": "CHOICE",
         "members": [
           {
+            "type": "SYMBOL",
+            "name": "quoted_string"
+          },
+          {
             "type": "PATTERN",
-            "value": "(\\\\.|[^<\\s])+"
+            "value": "(\\\\.|[^<\\s\"])+"
           },
           {
             "type": "SYMBOL",
@@ -613,6 +629,39 @@
           }
         ]
       }
+    },
+    "quoted_string": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "\""
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "PATTERN",
+                "value": "[^\"<\\\\]+"
+              },
+              {
+                "type": "PATTERN",
+                "value": "\\\\."
+              },
+              {
+                "type": "SYMBOL",
+                "name": "step_param"
+              }
+            ]
+          }
+        },
+        {
+          "type": "STRING",
+          "value": "\""
+        }
+      ]
     },
     "step_param": {
       "type": "PATTERN",
@@ -647,6 +696,18 @@
             {
               "type": "SYMBOL",
               "name": "step_arg"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "step_body"
             },
             {
               "type": "BLANK"
@@ -714,6 +775,18 @@
               "type": "BLANK"
             }
           ]
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "step_body"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
         }
       ]
     },
@@ -776,6 +849,18 @@
               "type": "BLANK"
             }
           ]
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "step_body"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
         }
       ]
     },
@@ -817,6 +902,18 @@
             {
               "type": "SYMBOL",
               "name": "step_arg"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "step_body"
             },
             {
               "type": "BLANK"
@@ -868,6 +965,18 @@
               "type": "BLANK"
             }
           ]
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "step_body"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
         }
       ]
     },
@@ -909,6 +1018,18 @@
             {
               "type": "SYMBOL",
               "name": "step_arg"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "step_body"
             },
             {
               "type": "BLANK"
@@ -1203,11 +1324,25 @@
       }
     },
     "data_table": {
-      "type": "REPEAT1",
-      "content": {
-        "type": "SYMBOL",
-        "name": "table_row"
-      }
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "SYMBOL",
+            "name": "table_row"
+          },
+          "named": true,
+          "value": "table_head_row"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SYMBOL",
+            "name": "table_row"
+          }
+        }
+      ]
     }
   },
   "extras": [
@@ -1295,5 +1430,6 @@
     "steps",
     "_alt_steps"
   ],
-  "supertypes": []
+  "supertypes": [],
+  "reserved": {}
 }

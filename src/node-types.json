@@ -33,6 +33,10 @@
         {
           "type": "step_arg",
           "named": true
+        },
+        {
+          "type": "step_body",
+          "named": true
         }
       ]
     }
@@ -66,6 +70,10 @@
         },
         {
           "type": "step_arg",
+          "named": true
+        },
+        {
+          "type": "step_body",
           "named": true
         }
       ]
@@ -167,6 +175,10 @@
         {
           "type": "step_arg",
           "named": true
+        },
+        {
+          "type": "step_body",
+          "named": true
         }
       ]
     }
@@ -184,6 +196,10 @@
       "multiple": true,
       "required": true,
       "types": [
+        {
+          "type": "table_head_row",
+          "named": true
+        },
         {
           "type": "table_row",
           "named": true
@@ -469,6 +485,10 @@
         {
           "type": "step_arg",
           "named": true
+        },
+        {
+          "type": "step_body",
+          "named": true
         }
       ]
     }
@@ -492,6 +512,21 @@
         },
         {
           "type": "language_name",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "quoted_string",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "step_param",
           "named": true
         }
       ]
@@ -690,6 +725,21 @@
     }
   },
   {
+    "type": "step_body",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "list_item",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "step_context",
     "named": true,
     "fields": {},
@@ -697,6 +747,10 @@
       "multiple": true,
       "required": false,
       "types": [
+        {
+          "type": "quoted_string",
+          "named": true
+        },
         {
           "type": "step_param",
           "named": true
@@ -841,6 +895,10 @@
           "named": true
         },
         {
+          "type": "step_body",
+          "named": true
+        },
+        {
           "type": "then_line",
           "named": true
         }
@@ -906,11 +964,19 @@
           "named": true
         },
         {
+          "type": "step_body",
+          "named": true
+        },
+        {
           "type": "when_line",
           "named": true
         }
       ]
     }
+  },
+  {
+    "type": "\"",
+    "named": false
   },
   {
     "type": "\"\"\"",
@@ -942,7 +1008,8 @@
   },
   {
     "type": "comment",
-    "named": true
+    "named": true,
+    "extra": true
   },
   {
     "type": "examples_kw",
@@ -962,6 +1029,10 @@
   },
   {
     "type": "language_name",
+    "named": true
+  },
+  {
+    "type": "list_item",
     "named": true
   },
   {

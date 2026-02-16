@@ -27,6 +27,7 @@ interface GherkinGrammarStruct {
   steps: Rule;
   _alt_steps: Rule;
   step_arg: Rule;
+  step_body: Rule;
   step_context: Rule;
   step_param: Rule;
   // Given
@@ -62,6 +63,8 @@ interface GherkinGrammarStruct {
   table_cell: Rule;
   // Doc String
   doc_string: Rule;
+  quoted_string: Rule;
+  list_item: Rule;
   // Misc
   _ws: Rule;
   comment: Rule;
